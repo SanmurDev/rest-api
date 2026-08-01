@@ -10,12 +10,13 @@ env:
 
 jobs:
   build:
+    name: build image
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 #checkout github
-        name: Checkout code
-      
+      - name: Checkout code
+        uses: actions/checkout@v3 #checkout github
+        
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
@@ -25,9 +26,7 @@ jobs:
       - name: Build & push
         uses: docker/build-push-action@v7
         with:
-          push: true
-          context: .
-          # file: ./path-to-dockerfile
+          push: true 
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           build-args: |
             APP_ENV=${{ secrets.APP_ENV }}
