@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
 
 
+
+
 env:
   REGISTRY: smurillov
   IMAGE_NAME: rest_api
